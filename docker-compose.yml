@@ -1,0 +1,10 @@
+services:
+  hermes-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: hermes-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=https://hermes-ant-47c07121c130.herokuapp.com/api

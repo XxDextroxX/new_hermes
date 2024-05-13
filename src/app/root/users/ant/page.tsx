@@ -127,14 +127,13 @@ const UsersAnt = () => {
             </div>
             {
               isOpen&& <DialogComponentGeneral
-              children=
-              <FormCreateUserAnt
-                onSubmit={onSubmit}
-              />
               title= 'Crear nuevo usuario'
               isSucces={true}
               showButtonDialog={true}
-              open={isOpen} setOpen={setIsOpen}/>
+              open={isOpen} setOpen={setIsOpen}>
+                <FormCreateUserAnt
+                onSubmit={onSubmit}/>
+                </DialogComponentGeneral>
             }
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mt-5">
                     {

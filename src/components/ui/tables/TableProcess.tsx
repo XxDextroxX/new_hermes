@@ -82,12 +82,13 @@ export const TableProcess = ({process}: TableProcessProps) => {
               isOpen&& <DialogComponentGeneral title={
                 'Información de procesos'
               }
-              children={<ViewProcess process={listAntProcess}/>}
               isSucces={true}
               onClick={()=>setIsOpen(false)}
               showButtonDialog={true}
               textButtonCancel={'Aceptar'}
-              open={isOpen} setOpen={setIsOpen}/>
+              open={isOpen} setOpen={setIsOpen}>
+                <ViewProcess process={listAntProcess}/>
+              </DialogComponentGeneral>
               
               
             }

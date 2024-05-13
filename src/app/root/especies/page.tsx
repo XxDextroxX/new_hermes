@@ -198,15 +198,16 @@ const Especies = () => {
             </div>
             {
               isOpen&& <DialogComponentGeneral
-              children=<FormCreateEspecies 
-              users={stateListUser}
-              onSubmit={onSubmit}
-              />
               title= 'Crear nueva especie'
               isSucces={true}
               showButtonDialog={true}
               open={isOpen}
-              setOpen={setIsOpen}/>
+              setOpen={setIsOpen}>
+                <FormCreateEspecies
+              users={stateListUser}
+              onSubmit={onSubmit}
+              />
+                </DialogComponentGeneral>
             }
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mt-5">
                     {

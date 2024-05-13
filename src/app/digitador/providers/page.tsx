@@ -51,7 +51,7 @@ const ProvidersPage = () => {
         }
 
         fecthProviders();
-    }, []);
+    }, [router]);
 
 
     const onSubmit = async(data: z.infer<typeof createProvidersSchema>) => {

@@ -48,7 +48,7 @@ const RequesterPage = () => {
         }
 
         fecthRequesters();
-    }, []);
+    }, [router]);
 
 
     const onSubmit = async(data: z.infer<typeof createRequesterSchema>) => {

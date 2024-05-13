@@ -95,11 +95,12 @@ export const CardListUsers = ({user}: CardListUsersProps) => {
 
             {
               isOpenWindowReport&&<DialogComponentGeneral
-              children=<FormReports username={user.username!}/>
               title= 'Ver reporte'
               isSucces={true}
               showButtonDialog={true}
-              open={isOpenWindowReport} setOpen={setisOpenWindowReport}/>
+              open={isOpenWindowReport} setOpen={setisOpenWindowReport}>
+                <FormReports username={user.username!}/>
+              </DialogComponentGeneral>
             }
          <label className="inline-flex items-center cursor-pointer">
             <input

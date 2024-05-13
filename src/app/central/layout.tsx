@@ -39,7 +39,7 @@ export default function CentralLayout({
         });
       }
     }
-  }, []);
+  }, [router]);
   return (
     <div>
       <ToastContainer/>

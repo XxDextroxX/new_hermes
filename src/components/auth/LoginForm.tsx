@@ -2,14 +2,14 @@
 import * as z from 'zod';
 import {  useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { LoginShema } from '@/schemas/login';
+import { LoginShema } from '@/schemas/schemas';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/form';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import { MessageCustom } from '..';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { saveAccessToken } from '@/lib/utils';
+import { saveAccessToken, saveUserModel } from '@/lib/utils';
 import { useUserStore } from '@/providers/user';
 import { login } from '@/api/auth';
 // import {  useRouter } from 'next/router';
@@ -39,7 +39,7 @@ export const LoginForm = () => {
                  router.push('/root');
                 break;
             case 'admin':
-                 router.push('/admin');
+                 router.push('/root');
                 break;
             case 'digitador':
                  router.push('/digitador');
@@ -59,6 +59,7 @@ export const LoginForm = () => {
             const user = response.user;
             if (user) {
                 setUser(user);
+                saveUserModel(user);
             }
             setMessageType('success');
             redirectToRolePage(response.user?.role ?? '');

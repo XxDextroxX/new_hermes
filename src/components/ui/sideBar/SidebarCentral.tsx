@@ -4,16 +4,16 @@ import { logout } from "@/api/auth";
 import { CardDataUser } from "@/components";
 import { getAccessToken } from "@/lib/utils";
 import { useUIStore } from "@/providers";
-import clsx from "clsx";
 import Link from "next/link"
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { FaFileExcel } from "react-icons/fa";
+import { FaFileExcel, FaUserCircle } from "react-icons/fa";
 import { IoCloseOutline, IoLogOutOutline, IoPersonOutline} from "react-icons/io5"
 
 
 export const SidebarCentral = () => {
 const router = useRouter();
+const pathName = usePathname();
 const isSideMenu = useUIStore((state)=>state.isSideMenuOpen);
 const closeSideMenu = useUIStore((state)=>state.closeSideMenu);
 
@@ -28,15 +28,17 @@ const [accessToken, setAccessToken] = useState<string | null>(null);
         setAccessToken(null);
         closeSideMenu();
         router.push('/auth/login');
+    }else if(response.code === 401){
+        setAccessToken(null);
+        closeSideMenu();
+        router.push('/auth/login');
     }
   }
 
   useEffect(() => {
         console.log('use effect');
     if (typeof window !== 'undefined') {
-      console.log('use effect', 'dentro de use effect');
       setAccessToken(getAccessToken());
-      console.log('accessToken:use', accessToken);
     }
   }, []);
 
@@ -63,48 +65,37 @@ const [accessToken, setAccessToken] = useState<string | null>(null);
         }
 
         <nav className={
-            clsx(
-                `fixed p-5 right-0 top-0 w-[500px]
-                h-screen bg-white z-20 shadow-2xl transform 
-                transation-all duration-300
-                overflow-y-auto
-                `,
-                {
-                    "translate-x-full": !isSideMenu
-                }
-        
-            )
+            isSideMenu ? 
+            `fixed w-screen
+            h-screen bg-white z-[1000] shadow-2xl transform 
+            transation-all duration-300
+            overflow-y-auto`
+            : 'w-[300px] h-screen bg-gray-200 bg-opacity-50 rounded-r-xl mr-5 hidden md:block'
+            
         }>
-        <IoCloseOutline
-                className="fixed right-5 top-5 cursor-pointer"
-                size={40}
-                onClick={()=>closeSideMenu()}
-        />
+         {
+             isSideMenu&&  <IoCloseOutline
+               className="fixed right-5 top-5 cursor-pointer"
+               size={40}
+               onClick={()=>closeSideMenu()}
+       />
 
-        <div className="mt-5">
+        }
+        <div className="flex justify-center">
             <CardDataUser/>
         </div>
             
-        <Link
-            href="/"
-            className="flex items-center mt-10 p-2 hover:bg-gray-100
-            rounded transition-all
-            "
-        >
-            <IoPersonOutline
-                size={30}
-            />
-            <span className="ml-4 text-xl font-semibold">
-                Perfil
-            </span>
-
-        </Link>
 
         <Link 
-            href="/"
-            className="flex items-center mt-10 p-2 hover:bg-gray-100
-            rounded transition-all
-            "
+            onClick={()=>closeSideMenu()}
+            href="/central"
+            className={
+                `
+                flex items-center mt-10 p-2 hover:bg-white
+                rounded transition-all
+                ${pathName === '/central' ? 'bg-white' : ''}
+                `
+            }
         >
             <FaFileExcel 
                 size={30}
@@ -114,12 +105,29 @@ const [accessToken, setAccessToken] = useState<string | null>(null);
             </span>
         </Link>
 
-        <div className="w-full h-px bg-gray-200 my-10"></div>
+        <Link
+            onClick={()=>closeSideMenu()}
+            href="/central/profile"
+            className={`flex items-center py-1 mt-5 pl-2 hover:bg-white
+            rounded transition-all
+            ${pathName === '/central/profile' ? 'bg-white' : ''}
+            "`}
+        >
+            <FaUserCircle
+                size={30}
+            />
+            <span className="ml-4 text-xl font-semibold">
+                Perfil
+            </span>
+
+        </Link>
+
+        <div className="w-full h-px bg-gray-200 my-5"></div>
 
         <div
             onClick={()=>closeSession(accessToken??'')}
-            className="flex items-center mt-10 p-2 hover:bg-gray-100
-            rounded transition-all
+            className="flex items-center  py-1 mt-5 pl-2 hover:bg-white
+            rounded transition-all hover:cursor-pointer
             "
         >
             <IoLogOutOutline

@@ -1,5 +1,5 @@
 'use client';
-import { RecoveryPasswordSchema } from "@/schemas/login";
+import { RecoveryPasswordSchema } from "@/schemas/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from 'zod';

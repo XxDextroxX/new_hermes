@@ -44,7 +44,7 @@ export const LoadExcel = () => {
     }, []);
 
     return (
-        <div className="flex flex-col items-center justify-center px-4 py-2">
+        <div className="flex flex-col items-center justify-center px-4 py-2 h-screen">
         <div className="bg-green-500 shadow-xl  rounded-sm w-full sm:w-1/2 md:w-1/3">
           <input
             placeholder="Cargar archivo"

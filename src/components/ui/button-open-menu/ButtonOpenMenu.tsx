@@ -11,7 +11,7 @@ export const ButtonOpenMenu = () => {
     <button 
     onClick={openSideMenu}
     className={`${titleFont.className} m-2 p-2 rounded-md
-    transition-all hover:bg-slate-200
+    transition-all hover:bg-slate-200 md:hidden
     `}>Menu</button>
   )
 }

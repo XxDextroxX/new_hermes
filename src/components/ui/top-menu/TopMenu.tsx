@@ -5,7 +5,7 @@ import { IoSearchOutline, IoCartOutline } from "react-icons/io5";
 
 export const TopMenu = () => {
   return (
-    <nav className="flex flex-row px-5 justify-between items-center w-full">
+    <nav className="flex flex-row px-5 justify-between items-center m-2">
         <div>
             <Link href="/" >
                 <span
@@ -14,7 +14,7 @@ export const TopMenu = () => {
                 <span>| Hermes</span>
             </Link>
         </div >
-    <ButtonOpenMenu/>
+      <ButtonOpenMenu/>
 
     </nav>
   )

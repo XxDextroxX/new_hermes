@@ -4,7 +4,7 @@ export class UserModel {
   name?: string;
   username?: string;
   role?: string;
-  isActive?: boolean;
+  isActive: boolean = true;
   createdAt?: string;
   updatedAt?: string;
   isUsingInitialPassword?: boolean;
@@ -17,7 +17,7 @@ export class UserModel {
           this.name = json.name;
           this.username = json.username;
           this.role = json.role;
-          this.isActive = json.isActive;
+          this.isActive = json.isActive??true;
           this.createdAt = json.createdAt;
           this.updatedAt = json.updatedAt;
           this.isUsingInitialPassword = json.isUsingInitialPassword;

@@ -194,3 +194,60 @@ export async function logout(token: string): Promise<Response> {
     };
   }
 }
+
+export async function updateUser(usermodel: UserModel, token: string, newPassword?: string, oldPassword?: string): Promise<Response> {
+
+  try {
+    let requestBody: { [key: string]: string | undefined } = {
+      username: usermodel.username,
+      name: usermodel.name,
+      email: usermodel.email,
+    };
+
+    // Añadir newPassword y oldPassword al objeto de la petición si no son nulos o vacíos
+    if (newPassword && newPassword.trim() !== '') {
+      requestBody['oldPassword'] = newPassword;
+    }
+    if (oldPassword && oldPassword.trim() !== '') {
+      requestBody['password'] = oldPassword;
+    }
+
+    console.log(`requestBody`, requestBody);
+
+    const response = await axios.patch(`${process.env.NEXT_PUBLIC_API_URL}/auth`, requestBody,
+    { headers: {
+      Authorization: `Bearer ${token}`,
+    }}
+    );
+
+
+    return {
+      status: true,
+      message: 'Usuario actualizado',
+      data: response,
+      code: 201,
+    };
+
+
+  } catch (error) {
+    const axiosError = error as AxiosError;
+    if (axiosError.response?.status === 401) {
+      return {
+        status: false,
+        message: 'Error de autorización',
+        code: 401,
+      };
+    }
+
+    return {
+      status: false,
+      message: `${(axiosError.response?.data as any)?.message[0]}`,
+      data: null,
+      code: axiosError.response?.status ?? 500,
+      accessToken: `${(axiosError.response?.data as any)?.accessToken}`,
+    };
+  }
+}
+
+
+

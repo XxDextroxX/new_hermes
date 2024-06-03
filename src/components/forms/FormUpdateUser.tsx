@@ -24,7 +24,7 @@ export const FormUpdateUser = () => {
             setstateUserLog(userLog);
             console.log('stateUserLog', stateUserLog.toJson());
         }
-    }, [stateUserLog]);
+    }, []);
 
     const form = useForm<z.infer<typeof UpdateUserSchema>>({
         mode: 'onChange',

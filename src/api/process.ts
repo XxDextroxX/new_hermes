@@ -58,7 +58,9 @@ export async function createProcess({antUserId,
     };
 
   } catch (error) {
+    console.log('error',error);
     const axiosError = error as AxiosError;
+    console.log('axiosError', axiosError)
     if (axiosError.response?.status === 401) {
       return {
         status: false,
@@ -69,7 +71,7 @@ export async function createProcess({antUserId,
 
     return {
       status: false,
-      message: `Error al iniciar sesión ${(axiosError.response?.data as any)?.message[0]}`,
+      message: `${(axiosError.response?.data as any)?.message[0]}`,
       data: null,
       code: axiosError.response?.status ?? 500,
     accessToken: `${(axiosError.response?.data as any)?.accessToken}`,

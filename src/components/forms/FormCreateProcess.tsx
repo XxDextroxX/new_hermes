@@ -162,6 +162,8 @@ export const FormCreateProcess = () => {
                     observations: ''
                 }
             );
+        }else{
+            toast(response.message??'Error al crear el proceso');
         }
 
         

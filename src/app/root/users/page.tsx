@@ -39,10 +39,10 @@ const Users = () => {
         }
         if (response.status) {
             setStateListUser(response.users??[]);
-            updateAccessToken(response?.accessToken??'');
+            updateAccessToken(response?.accessToken!);
         }else{
             setStateListUser([]);
-            updateAccessToken(response?.accessToken??'');
+            updateAccessToken(response?.accessToken!);
             router.push('/auth/login');
         }
        
@@ -76,7 +76,7 @@ const Users = () => {
         }
         if (response.status) {
             toast(response.message);
-            updateAccessToken(response?.accessToken??'');
+            updateAccessToken(response?.accessToken!);
             const user = response.user;
             if (user) {
                 setStateListUser([...stateListUser, user]);
@@ -84,7 +84,7 @@ const Users = () => {
             setIsOpen(false);
         }else{
             toast(response.message);
-            updateAccessToken(response?.accessToken??'');
+            updateAccessToken(response?.accessToken!);
         }
       }
 

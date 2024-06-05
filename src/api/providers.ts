@@ -64,13 +64,13 @@ export async function createProvider(name: string, details: string, token: strin
 }
 
 export async function getProviders(token: string): Promise<Response> {
+  console.log('Me ejecute provider');
   try {
     const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/provider/`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log(`responseGet: ${JSON.stringify(response.data)}`);
     const data = response.data.data;
     const accessToken = response.data.accessToken;
     const listProviders = data.map((requester: ProvidersModel) => new ProvidersModel().fromJson(requester));

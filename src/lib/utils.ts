@@ -16,13 +16,13 @@ export function getAccessToken() {
 
 export function updateAccessToken(accessToken: string) {
   console.log(`token update: ${accessToken}`);
-  localStorage.setItem("accessToken", accessToken)
-  // const currentAccessToken = getAccessToken();
-  // console.log(`currentAccessToken: ${currentAccessToken === accessToken}`);
-  // if (currentAccessToken !== accessToken) {
-  //   console.log('Saving new token');
-  //   localStorage.setItem("accessToken", accessToken)
-  // }
+  // localStorage.setItem("accessToken", accessToken)
+  const currentAccessToken = getAccessToken();
+  console.log(`currentAccessToken: ${currentAccessToken === accessToken}`);
+  if (currentAccessToken !== accessToken) {
+    console.log('Saving new token');
+    localStorage.setItem("accessToken", accessToken)
+  }
 }
 
 export function saveUserModel(user: UserModel) {

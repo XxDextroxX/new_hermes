@@ -108,7 +108,7 @@ const UsersAnt = () => {
             setStateListUser(currentUsers => currentUsers.filter(user => user.id !== username));
         }else{
             toast(response.message);
-            updateAccessToken(response?.accessToken??'');
+            updateAccessToken(response?.accessToken!);
         }
     }
 

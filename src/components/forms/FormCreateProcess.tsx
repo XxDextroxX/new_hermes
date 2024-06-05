@@ -71,7 +71,7 @@ export const FormCreateProcess = () => {
             if (response.status) {
                 setStateListProviders(response.providers??[]);
             }
-            updateAccessToken(response?.accessToken??'');
+            updateAccessToken(response?.accessToken!);
         }
 
         fecthProviders();
@@ -90,7 +90,7 @@ export const FormCreateProcess = () => {
             if (response.status) {
                 setStateListRequester(response.requesters??[]);
             }
-            updateAccessToken(response?.accessToken??'');
+            updateAccessToken(response?.accessToken!);
         }
 
         fecthRequesters();
@@ -109,7 +109,7 @@ export const FormCreateProcess = () => {
             if (response.status) {
                 setStateListUser(response.users??[]);
             }
-            updateAccessToken(response?.accessToken??'');
+            updateAccessToken(response?.accessToken!);
         }
 
         fecthUsers();
@@ -162,6 +162,7 @@ export const FormCreateProcess = () => {
                     observations: ''
                 }
             );
+            updateAccessToken(response.accessToken!);
         }else{
             toast(response.message??'Error al crear el proceso');
         }

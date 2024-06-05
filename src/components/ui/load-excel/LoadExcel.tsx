@@ -21,7 +21,7 @@ export const LoadExcel = () => {
         }
         const response = await uploadExcelReport(accessToken??'',excelFile, excelFile.name);
         console.log(`response1: ${JSON.stringify(response)}`);
-        updateAccessToken(response?.accessToken ?? '');
+        updateAccessToken(response?.accessToken);
         if (!response.status && response.code === 401) {
             setMessageType('error');
             setMessage('Error de autenticación');

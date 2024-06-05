@@ -26,7 +26,7 @@ export default function UserDigitadorLayout({
           console.log('responseRoot', response);
           if (response.status) {
               const user = response.user;
-              updateAccessToken(response.user?.accessToken ?? '');
+              updateAccessToken(response.user?.accessToken!);
               if (user) {
                   saveUserModel(user);
                   // setUser(user);

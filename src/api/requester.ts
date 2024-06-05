@@ -57,13 +57,13 @@ console.log(`token: ${token}  name: ${name}`);
 }
 
 export async function getRequesters(token: string): Promise<Response> {
+  console.log('Me ejecute requester');
   try {
     const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/requester/`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log(`responseGet: ${JSON.stringify(response.data)}`);
     const data = response.data.data;
     const accessToken = response.data.accessToken;
     const listRequester = data.map((requester: RequesterModel) => new RequesterModel().fromJson(requester));
@@ -104,7 +104,6 @@ export async function deleteRequesters(id: string, token: string): Promise<Respo
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log(`responseGet: ${JSON.stringify(response.data)}`);
     const data = response.data.data;
     const accessToken = response.data.accessToken;
 

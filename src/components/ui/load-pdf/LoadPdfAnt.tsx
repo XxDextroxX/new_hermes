@@ -31,6 +31,7 @@ export const LoadPdfAnt = () => {
         if (response.status) {
             setMessageType('success');
             setMessage((response.message as string));
+            updateAccessToken(response.accessToken!);
         }else{
             setMessageType('error');
             setMessage((response.messages as string[])[0]);

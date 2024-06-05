@@ -61,7 +61,7 @@ export const FormUpdateUser = () => {
             }else{
                 toast(response.message??'Error al actualizar usuario');
             }
-            updateAccessToken(response.accessToken??'');
+            updateAccessToken(response.accessToken!);
         } catch (error) {
             toast('Error al actualizar usuario');
         }

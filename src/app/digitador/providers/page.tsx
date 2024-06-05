@@ -47,7 +47,7 @@ const ProvidersPage = () => {
             if (response.status) {
                 setStateListRequester(response.providers??[]);
             }
-            updateAccessToken(response?.accessToken??'');
+            updateAccessToken(response?.accessToken!);
         }
 
         fecthProviders();
@@ -68,7 +68,7 @@ const ProvidersPage = () => {
         }else{
             toast(`Error al crear el solicitante ${response.message}`);
         }
-        updateAccessToken(response?.accessToken??'');
+        updateAccessToken(response?.accessToken!);
     }
     
 
@@ -86,7 +86,7 @@ const ProvidersPage = () => {
         }else{
             toast(`Error al eliminar el solicitante ${response.message}`);
         }
-        updateAccessToken(response?.accessToken??'');
+        updateAccessToken(response?.accessToken!);
     }
 
 

@@ -92,7 +92,6 @@ export async function getProcess(
           Authorization: `Bearer ${token}`,
         },
       });
-      // console.log(`responseGet11: ${JSON.stringify(response.data)}`);
       const data = response.data.data;
       const accessToken = response.data.accessToken;
       const listProcess = data.map((process: ProcessModel) => new ProcessModel().fromJson(process));

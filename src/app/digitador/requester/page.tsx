@@ -44,7 +44,7 @@ const RequesterPage = () => {
             if (response.status) {
                 setStateListRequester(response.requesters??[]);
             }
-            updateAccessToken(response?.accessToken??'');
+            updateAccessToken(response?.accessToken!);
         }
 
         fecthRequesters();
@@ -65,7 +65,7 @@ const RequesterPage = () => {
         }else{
             toast(`Error al crear el solicitante ${response.message}`);
         }
-        updateAccessToken(response?.accessToken??'');
+        updateAccessToken(response?.accessToken!);
     }
     
 

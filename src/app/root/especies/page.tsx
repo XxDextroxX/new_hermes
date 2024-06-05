@@ -88,7 +88,7 @@ const Especies = () => {
             if (responseEspecies.status) {
                 console.log('listEspecies', responseEspecies!.especies??[]);
                 setListEspcies([...ListEspcies, ...responseEspecies!.especies!]);
-                updateAccessToken(responseEspecies?.accessToken??'');
+                updateAccessToken(responseEspecies?.accessToken!);
             }
             console.log('responseEspecies.length', responseEspecies?.especies?.length??0);
             if (responseEspecies?.especies!.length < 20) {
